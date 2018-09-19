@@ -5,4 +5,33 @@
     <color name="colorAccent">#FF4081</color>
     <color name="background">#938e8e</color>
     <color name="buttonBackground">#fff</color>
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+        <item>@color/dot_light_screen5</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+        <item>@color/dot_dark_screen5</item>
+    </array>
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#bf9e67</color>
+    <color name="dot_dark_screen2">#bf9e67</color>
+    <color name="dot_dark_screen3">#bf9e67</color>
+    <color name="dot_dark_screen4">#bf9e67</color>
+    <color name="dot_dark_screen5">#bf9e67</color>
+
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#fdd28a</color>
+    <color name="dot_light_screen2">#fdd28a</color>
+    <color name="dot_light_screen3">#fdd28a</color>
+    <color name="dot_light_screen4">#fdd28a</color>
+    <color name="dot_light_screen5">#fdd28a</color>
 </resources>

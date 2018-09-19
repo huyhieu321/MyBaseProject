@@ -3,7 +3,6 @@ package com.example.huypham.mybaseproject.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.huypham.mybaseproject.Dialog.BookingDiaglog;
-import com.example.huypham.mybaseproject.Dialog.BookingDiaglog.DialogListener;
 import com.example.huypham.mybaseproject.R;
 
 
@@ -31,16 +29,14 @@ public class FragmentHotel extends Fragment implements BookingDiaglog.DialogList
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    TextView textView;
+    Button button;
+    BookingDiaglog bookingDiaglog;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
-    TextView textView;
-    BookingDiaglog bookingDiaglog;
-    Button book;
     public FragmentHotel() {
         // Required empty public constructor
     }
@@ -78,14 +74,15 @@ public class FragmentHotel extends Fragment implements BookingDiaglog.DialogList
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hotel, container, false);
         textView = view.findViewById(R.id.in);
-        book = view.findViewById(R.id.book);
+        button = view.findViewById(R.id.book);
 
-        book.setOnClickListener(new OnClickListener() {
+
+        button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = getFragmentManager();
                 bookingDiaglog = new BookingDiaglog();
-                bookingDiaglog.setTargetFragment(FragmentHotel.this, 0);
+                bookingDiaglog.setTargetFragment(FragmentHotel.this,0);
                 bookingDiaglog.show(fragmentManager,"A");
             }
         });
@@ -93,6 +90,17 @@ public class FragmentHotel extends Fragment implements BookingDiaglog.DialogList
     }
 
 
+    @Override
+    public void sendInput(String input) {
+        textView.setText(input);
+    }
+
+    @Override
+    public void DialogEnalbe(boolean flag) {
+        if(flag == true){
+            bookingDiaglog.dismiss();
+        }
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -118,10 +126,7 @@ public class FragmentHotel extends Fragment implements BookingDiaglog.DialogList
         mListener = null;
     }
 
-    @Override
-    public void sendInput(String input) {
-        textView.setText(input);
-    }
+
 
     /**
      * This interface must be implemented by activities that contain this

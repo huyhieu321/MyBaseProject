@@ -5,21 +5,24 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.example.huypham.mybaseproject.Fragment.FragmentHotel;
 import com.example.huypham.mybaseproject.Fragment.FragmentHotel.OnFragmentInteractionListener;
+import com.example.huypham.mybaseproject.Fragment.FragmentRestaurant;
+import com.example.huypham.mybaseproject.Fragment.FragmentTransport;
 import com.example.huypham.mybaseproject.R;
 
 public class Details extends AppCompatActivity implements OnFragmentInteractionListener{
-    boolean fragmentHotelFlag = true;
+    boolean fragHotelFlag = true;
+    boolean fragResFlag = true;
+    boolean fragTransFlag = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,18 +46,25 @@ public class Details extends AppCompatActivity implements OnFragmentInteractionL
                 int id = menuItem.getItemId();
                 switch (id){
                     case R.id.action_hotel:
-                        if(fragmentHotelFlag) {
+                        if(fragHotelFlag) {
                             addHotel();
                         }
                         break;
                     case R.id.action_restaurant:
+                        if(fragResFlag){
+                            addRestaurant();
+                        }
                         break;
                     case R.id.action_transport:
+                        if(fragTransFlag){
+                            addTransport();
+                        }
                         break;
                 }
                 return true;
             }
         });
+
     }
 
     @Override
@@ -73,7 +83,23 @@ public class Details extends AppCompatActivity implements OnFragmentInteractionL
         fragmentTransaction.add(R.id.frameContent,fragmentHotel,"fragHotel");
         fragmentTransaction.commit();
         fragmentTransaction.addToBackStack("fragHotel");
-        fragmentHotelFlag=false;
+        fragHotelFlag=false;
+    }
+    public void addRestaurant(){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        FragmentRestaurant fragmentRestaurant = new FragmentRestaurant();
+        fragmentTransaction.add(R.id.frameContent,fragmentRestaurant,"fragHotel");
+        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack("fragRestaurant");
+        fragResFlag=false;
+    }
+    public void addTransport(){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransport fragmentTransport = new FragmentTransport();
+        fragmentTransaction.add(R.id.frameContent,fragmentTransport,"fragHotel");
+        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack("fragTransport");
+        fragTransFlag=false;
     }
 
 }

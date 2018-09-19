@@ -19,6 +19,7 @@ import com.example.huypham.mybaseproject.R;
 public class BookingDiaglog extends android.support.v4.app.DialogFragment  {
     public interface DialogListener{
         void sendInput(String input);
+        void DialogEnalbe(boolean flag);
     }
     public DialogListener dialogListener;
 
@@ -40,7 +41,9 @@ public class BookingDiaglog extends android.support.v4.app.DialogFragment  {
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialogListener.DialogEnalbe(true);
                 dialogListener.sendInput("HAHA");
+
             }
         });
         builder.setView(view);
